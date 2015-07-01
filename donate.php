@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="CC is more than a license to share; it is a license for all of us to create a better world. Invest in a more open future by supporting Creative Commons.">
+    <meta property="og:image" content="https://creativecommons.org/wp-content/uploads/2014/02/heart-donatepage.png" />
+
+    <title>Donate to Creative Commons</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<style>
+	.lt-ie9-info {
+		padding: 5px 10px;
+		background:#a30006;
+		color:#fff;
+		-webkit-transition:all .3s ease-in;
+		transition:all .3s ease-in;
+	}
+	.lt-ie9-info p { margin: 0; }
+	.lt-ie9-info a {
+		color:#fff;
+		text-decoration:underline;
+		font-weight:700;
+	}
+	@media (min-width: 450px) {
+		.btn, #custom-amt {
+			padding: 8px 16px;
+			font-size: 18px;
+		}
+	}
+	@media (max-width: 500px) {
+		.well { text-align: center; }
+	}
+	@media (max-width: 350px) {
+		.well { padding: 10px; }
+	}
+	</style>
+
+	<?php
+	  
+	$q = $_SERVER['QUERY_STRING']; // in case of redirects, just pass the whole query-string to Civi
+
+$lang = $_GET['i18n']; // get the language code
+
+$utm_c = $_GET['utm_campaign']; // get GA campaign
+
+$utm_s = $_GET['utm_source']; // get GA source
+
+$utm_source = $utm_c . "" . $utm_s "-i18n-" . $lang; // 2015fund_license_slide2015-i18n-pt_PT, for example
+
+$path = $_SERVER['PHP_SELF'];
+
+?>
+
+
+	  <!--[if lt IE 9]><meta http-equiv="refresh" content="0;URL='https://donate.creativecommons.org?<?php echo $q; ?>'" /> <![endif]-->
+
+	  </hea>           
+
+  <body>
+	<!--[if lt IE 9]>
+	<div class="lt-ie9-info">
+        <p>You are using an unsupported browser. You are being redirected to a new donation page. <a href="https://donate.creativecommons.org?<?php echo $q; ?>">Click here if you are not redirected.</a></p>
+    </div>
+	<![endif]-->
+    <div class="container">
+
+      <div class="starter-template">
+        <img style="max-width: 40%; max-height: 90px; float: right;" src="https://creativecommons.org/wp-content/uploads/2014/02/heart-donatepage.png"  />
+        <h1>Donate to Creative Commons</h1>
+        <p class="lead">CC is more than a license to share; it is a license for all of us to create a better world. Invest in a more open future by supporting Creative Commons.</p>
+      </div>
+
+      <noscript>
+
+        <div class="bg-info" style="padding: 2em">
+
+          Please consider enabling JavaScript on this page, or making a donation directly to donate@creativecommons.org using <a href="https://www.paypal.com">PayPal</a>
+
+        </div>
+
+      </noscript>
+
+      <div class="well">
+
+	    <div class="form-group">
+
+	      <div class="btn-group" id="amount" data-toggle="buttons">
+	        <label class="btn btn-primary">
+	          <input type="radio" name="options" id="option1" value="10" autocomplete="off"> $10
+	        </label>
+	        <label class="btn btn-primary active">
+	          <input type="radio" name="options" id="option2" value="25" autocomplete="off" checked> $25
+	        </label>
+	        <label class="btn btn-primary">
+	          <input type="radio" name="options" id="option3" value="50" autocomplete="off"> $50
+	        </label>
+	        <label class="btn btn-primary">
+	          <input type="radio" name="options" id="option4" value="100" autocomplete="off"> $100
+	        </label>
+	        <label class="btn btn-primary">
+	          <input type="radio" name="options" id="other" value="other" autocomplete="off"> Other
+	        </label>
+	      </div>
+	    </div>
+
+	    <div class="form-group" id="custom" style="display: none">
+	      <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+	      <div class="input-group">
+	        <div class="input-group-addon">$</div>
+	        <input id="custom-amt" type="text" class="form-control" autocomplete="off" placeholder="Amount">
+	      </div>
+	    </div>
+
+	    <div class="form-group">
+          
+	  <form action="https://donate.creativecommons.org/2015/charge.php" method="POST">
+          <script src="https://checkout.stripe.com/checkout.js"></script>
+
+
+          <button class="btn btn-success btn-lg" id="customButton">Donate with credit card</button>
+
+	  </form>
+
+	    </div>
+
+	    <div class="form-group">
+
+          <form  method="post" action="https://www.paypal.com/cgi-bin/webscr">
+            <input type="hidden" name="business" value="paypal@creativecommons.org">
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="amount" value="25.00" id="donation-amount">
+            <input type="hidden" name="item_name" value="Donation to Creative Commons - <?php echo $utm_source; ?>">
+            <input type="image" name="submit" border="0" alt="PayPal - The safer, easier way to pay online" src="data:image/png;base64,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"/>
+          </form>
+	    </div>
+      </div>
+    </div><!-- /.container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+
+      var handler = StripeCheckout.configure({
+        key: 'pk_live_NWYVC2t6rdhYyb4JXmdj0qyT',
+        image: 'cc64.png',
+        token: function(token) {
+	      // Use the token to create the charge with a server-side script.
+	      // You can access the token ID with `token.id`
+
+	    console.log(token)
+	    var chargeData = {
+		donationAmt: 2500,
+		token: token
+	    }
+	    $.ajax({
+		url: '/2015/charge.php',
+		type: 'post',
+		data: {tokenid: token.id, email: token.email, donationAmt: $('#donation-amount').val() * 100 },
+		success: function(data) {
+		    if (data != 'error') {
+			console.log("Card successfully charged!");
+			window.location.replace("http://creativecommons.org/thank-you-for-your-donation");
+		    }
+		    
+
+		},
+		error: function(data) {
+		    console.log("Ajax Error!");
+		    console.log(data);
+		}
+            }); // end ajax call
+
+        }
+      });
+
+      $(document).ready(function() {
+
+        $("input[name=options]:radio").change(function () {
+
+          if ($("#other").prop("checked")) {
+	        $('#custom').show();
+            $("#custom-amt").focus();
+          } else {
+	        $('#custom').hide();
+	        $('#custom-amt').val('');
+	        $("#donation-amount").val(this.value);
+          }
+
+        });
+
+        $("#custom-amt").change(function() {
+
+	      $("#donation-amount").val(this.value);
+
+        });
+
+        $("#custom-amt").keydown(function() {
+
+          $("#donation-amount").val(this.value);
+
+        });
+
+        $('#customButton').on('click', function(e) {
+
+	    e.preventDefault();
+
+	    // Open Checkout with further options
+	    handler.open({
+		name: 'Creative Commons',
+	        description: 'Online donation' + ' $' + $('#donation-amount').val() + '..',
+	        value: $('#donation-amount').val() * 100
+	    });
+
+
+        });
+
+      });
+    </script>
+
+    <script>
+
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-2010376-28', 'auto');
+
+      ga('send', 'pageview');
+
+    </script>
+
+  </body>
+</html>
