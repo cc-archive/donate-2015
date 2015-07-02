@@ -49,7 +49,7 @@ $utm_c = $_GET['utm_campaign']; // get GA campaign
 
 $utm_s = $_GET['utm_source']; // get GA source
 
-$utm_source = $utm_c . "" . $utm_s "-i18n-" . $lang; // 2015fund_license_slide2015-i18n-pt_PT, for example
+$utm_source = $utm_c . "_" . $utm_s "-i18n-" . $lang; // 2015fund_license_slide2015-i18n-pt_PT, for example
 
 $path = $_SERVER['PHP_SELF'];
 
